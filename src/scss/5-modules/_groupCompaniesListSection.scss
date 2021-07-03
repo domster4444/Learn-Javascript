@@ -1,0 +1,44 @@
+#groupCompaniesListSection {
+  #groupCompaniesListSection {
+    @include flex(space-between, center);
+
+    @include media('<=809px') {
+      @include flex(center, center);
+    }
+    @include media('<=1000px') {
+      @include flex(center, center);
+    }
+    padding: 3rem;
+
+    // -->overlapped
+    // -->
+
+    #leftSection {
+    }
+    #rightSection {
+      img {
+        height: 4rem;
+        @include media('<=900px') {
+          height: 2rem;
+        }
+      }
+      .companyCard {
+        margin-left: 2rem;
+        margin-right: 2rem;
+      }
+      @include flex(center, center);
+    }
+    .companyCard {
+      font-size: 2.8rem;
+      @include flex(center, center);
+      align-items: center;
+      height: 7rem;
+    }
+  }
+}
+
+#groupCompaniesListSection #groupCompaniesListSection {
+  @include media('<=1588px') {
+    width: 90%;
+  }
+}

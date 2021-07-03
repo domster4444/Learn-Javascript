@@ -1,0 +1,129 @@
+:root {
+  --modal-duration: 1s;
+  --modal-color: transparent;
+}
+
+.modal {
+  overflow-x: hidden !important;
+
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  margin: 10% auto;
+  width: 50%;
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.modal-header h2,
+.modal-footer h3 {
+  margin: 0;
+}
+
+.modal-header {
+  background: var(--modal-color);
+  color: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.modal-body {
+  background: #fff;
+}
+
+.modal-footer {
+  background: var(--modal-color);
+  color: #fff;
+  text-align: center;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.close {
+  padding: 0 !important;
+  margin-top: -2rem;
+  background: black;
+  position: relative;
+  z-index: 10000;
+  float: right;
+  font-size: 30px;
+  color: white;
+}
+
+.close:hover,
+.close:focus {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+//?Copied Code..
+#modalBody {
+  position: relative;
+  video {
+    margin-top: 6rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    outline: none;
+    @include media('>=877px') {
+      height: 28.5rem;
+    }
+
+    @include media('<=878px') {
+      margin-top: 5rem;
+      height: 22.3rem;
+    }
+    @include media('<=879px') {
+      margin-top: 6rem;
+      height: 29rem;
+    }
+    @include media('<=861px') {
+      margin-top: 6rem;
+      height: 28.9rem;
+    }
+
+    @include media('<=860px') {
+      margin-top: 7rem;
+      height: 32.7rem;
+    }
+    @include media('<=860px') {
+      margin-top: 7rem;
+      height: 32.7rem;
+    }
+    @include media('<=788px') {
+      margin-top: 4.2rem;
+      height: 18.8rem;
+    }
+
+    position: absolute;
+    z-index: 1;
+  }
+  img {
+    position: absolute;
+    @include media('>=880px') {
+      height: 50rem;
+    }
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,8 @@
+#dashboardSection {
+  img {
+    width: 108rem;
+    @include media('<=915px') {
+      width: 100vw;
+    }
+  }
+}

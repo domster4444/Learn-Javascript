@@ -1,0 +1,55 @@
+#ExtendServiceSectionmain {
+  background: rgb(250, 250, 254);
+  flex-direction: column;
+
+  .contentBlock {
+    flex-direction: column;
+  }
+
+  .cards {
+    // box-shadow: 0px 40px 80px 0px rgb(1 1 64 / 8%);
+    .cardHeaderContainer {
+      flex-direction: column;
+      @include flex(center, center);
+    }
+    h2 {
+      margin: 0;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 4rem;
+      color: black;
+    }
+
+    hr {
+      width: 80%;
+      border: 1px solid rgb(229, 229, 229);
+    }
+
+    @include media('<=788px') {
+      min-width: 75vw;
+    }
+    width: 34rem;
+    height: 25rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    ul {
+      list-style: none;
+    }
+  }
+}
+
+.blueText {
+  color: rgb(48, 155, 242);
+}
+
+.greenText {
+  color: rgb(103, 197, 55);
+}
+.yellowText {
+  color: rgb(255, 165, 18);
+}
+.purpleText {
+  color: rgb(99, 51, 238);
+}
