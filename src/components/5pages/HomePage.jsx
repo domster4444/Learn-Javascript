@@ -18,7 +18,7 @@ import Footer from '../4templates/Footer';
 import ArrowGhostCardSection from '../4templates/ArrowGhostCardSection';
 
 export default function Homepage(props) {
-  if (props.isLoggedInProps === 'false') {
+  if (props.isLoggedInProps === false) {
     return (
       <div id="homepage">
         {/* //Video modal should be at top */}
@@ -41,6 +41,6 @@ export default function Homepage(props) {
       </div>
     );
   } else {
-    return <Redirect to="/welcomehome" />;
+    return <Redirect to="/dashboardpage" />;
   }
 }

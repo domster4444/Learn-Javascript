@@ -1,0 +1,31 @@
+import React from 'react';
+import { Redirect } from 'react-router';
+import { Route } from 'react-router-dom';
+import DashboardPage from './components/5pages/DashboardPage';
+const PrivateRoute = (props) => {
+  if (props.loggedInStateProps === true) {
+    return (
+      <>
+        <Route
+          path="/dashboardpage"
+          component={() => {
+            return (
+              <DashboardPage
+                isInitialHospitalAlreadySet={props.isInitialHospitalAlreadySet}
+                loggedInHospitalDetail={props.loggedInHospitalDetail}
+              />
+            );
+          }}
+        />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Redirect to="/" />
+      </>
+    );
+  }
+};
+
+export default PrivateRoute;

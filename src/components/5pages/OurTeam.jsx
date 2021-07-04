@@ -5,7 +5,7 @@ import telescopeImage from '../../img/ourTeam/telescopeImg.png';
 
 export default function OurTeam(props) {
   console.log(props.isLoggedInProps);
-  if (props.isLoggedInProps === 'false') {
+  if (props.isLoggedInProps === false) {
     return (
       <main id="ourTeamPage">
         <section id="heroSection">
@@ -155,6 +155,6 @@ export default function OurTeam(props) {
       </main>
     );
   } else {
-    return <Redirect to="/welcomehome" />;
+    return <Redirect to="/dashboardpage" />;
   }
 }

@@ -1,0 +1,20 @@
+#setInitialDetails-Model {
+  z-index: 1000;
+}
+.modal-backdrop.show {
+  z-index: 1;
+}
+
+.modal-content {
+  width: 100% !important;
+  label {
+    font-size: 1.8rem;
+  }
+  input {
+    height: 4rem;
+  }
+  button {
+    padding: 0.5rem 2rem;
+    font-size: 1.4rem;
+  }
+}

@@ -12,14 +12,32 @@ import LoginPage from './components/5pages/LoginPageI';
 import ForgotPasswordPage from './components/5pages/ForgotPasswordPage';
 import PageNotFound from './components/5pages/PageNotFound';
 import Service from './components/5pages/Service';
-import Process from './components/5pages/Process';
 import OurTeam from './components/5pages/OurTeam';
 import { useState } from 'react';
-import WelcomeHome from './components/5pages/WelcomeHome';
 import { css } from 'styled-components';
+import PrivateRoute from './PrivateRoute';
 function App() {
-  const [isLoggedIn, setisLoggedIn] = useState('false');
+  // _________________STATE FOR ALL HOSPITAL DATA AFTER LOGGEDIN start
+
+  const [loggedInHospitalCode, setLoggedInHospitalCode] = useState('');
+  const [loggedInHospitalName, setLoggedInHospitalName] = useState('');
+  const [loggedInHospitalEmail, setLoggedInHospitalEmail] = useState('');
+  const [loggedInHospitalDistrict, setLoggedInHospitalDistrict] = useState('');
+
+  let loggedInHospitalDetail = {
+    loggedInHospitalCode: loggedInHospitalCode,
+    loggedInHospitalName: loggedInHospitalName,
+    loggedInHospitalEmail: loggedInHospitalEmail,
+    loggedInHospitalDistrict: loggedInHospitalDistrict,
+  };
+  // _________________STATE FOR ALL HOSPITAL DATA AFTER LOGGEDIN end
+
+  const [isLoggedIn, setisLoggedIn] = useState(false);
   const [currentUser, setUser] = useState('');
+  const [isInitialHospitalAlreadySet, setIsInitialHospitalAlreadySet] =
+    useState(false);
+
+  //?fetch and set isInitialHospitalALreadySet ? to true
 
   return (
     <>
@@ -42,6 +60,11 @@ function App() {
           path="/login"
           component={() => (
             <LoginPage
+              // ---------set loggedin hospital state after success login
+              setLoggedInHospitalCode={setLoggedInHospitalCode}
+              setLoggedInHospitalName={setLoggedInHospitalName}
+              setLoggedInHospitalEmail={setLoggedInHospitalEmail}
+              setLoggedInHospitalDistrict={setLoggedInHospitalDistrict}
               isLoggedInProps={isLoggedIn}
               setLoggedInProps={setisLoggedIn}
               setUser={setUser}
@@ -56,23 +79,19 @@ function App() {
         />
 
         <Route
-          path="/process"
-          component={() => <Process isLoggedInProps={isLoggedIn} />}
-        />
-
-        <Route
           path="/ourteam"
           component={() => <OurTeam isLoggedInProps={isLoggedIn} />}
         />
-        <Route
-          path="/welcomehome"
-          component={() => (
-            <WelcomeHome
-              currentUser={currentUser}
-              setLoggedInProps={setisLoggedIn}
-              loggedInStateProps={isLoggedIn}
-            />
-          )}
+
+        {/* ________________________PRIVATE ROUTES  */}
+        <PrivateRoute
+          // ------------ALL CURRENT USER DATA
+          loggedInHospitalDetail={loggedInHospitalDetail}
+          // currentUser={currentUser}
+          //? pass isInitialHospitalAlreadySet to specify if  needed to show model or not
+          isInitialHospitalAlreadySet={isInitialHospitalAlreadySet}
+          setLoggedInProps={setisLoggedIn}
+          loggedInStateProps={isLoggedIn}
         />
       </Router>
       <ToastContainer toastClassName={css({ fontSize: '20rem' })} />

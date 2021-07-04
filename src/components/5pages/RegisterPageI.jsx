@@ -1,9 +1,15 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 import { useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 
 import Button from 'react-bootstrap/Button';
-const RegisterPageI = () => {
+
+import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
+const RegisterPageI = (props) => {
   useEffect(() => {
     function autocomplete(inp, arr) {
       /*the autocomplete function takes two arguments,
@@ -196,109 +202,259 @@ const RegisterPageI = () => {
     autocomplete(document.getElementById('myInput'), countries);
   }, []);
 
-  return (
-    <>
-      <div className="containerCenter">
-        <div className="contentBlock">
-          <main id="RegisterPageI">
-            <div id="rightDivision">
-              <section id="formContainer">
-                <h1 className="poppins_medium_500">
-                  Let's protect yourself and those <br /> around you by
-                  vaccinating{' '}
-                </h1>
+  // _____________________________FORM HANDLING
 
-                {/* _______________________hospital name  */}
-                <label
-                  id="defaultFormLable"
-                  className="poppins_semibold_600"
-                  htmlFor="default-radio"
-                >
-                  Hospital Name
-                </label>
+  function emptyAllField() {
+    // --------------Gvariable
+    const hospital_name_field = document.getElementById('register_name_field');
+    const hospital_email_field = document.getElementById(
+      'register_email_field'
+    );
+    const hospital_district_field = document.getElementById(
+      'register_district_field'
+    );
+    const hospital_password1_field = document.getElementById(
+      'register_password1_field'
+    );
+    const hospital_password2_field = document.getElementById(
+      'register_password2_field'
+    );
+    const hospital_licence_field = document.getElementById(
+      'register_licence_field'
+    );
+    hospital_name_field.value = '';
+    hospital_email_field.value = '';
+    hospital_district_field.value = '';
+    hospital_password1_field.value = '';
+    hospital_password2_field.value = '';
+    hospital_licence_field.value = '';
+  }
 
-                <Form.Control type="text" placeholder="Enter hospital name" />
-                {/* ___________________hospitla email */}
-                <label
-                  id="defaultFormLable"
-                  className="poppins_semibold_600"
-                  htmlFor="default-radio"
-                >
-                  Hospital Email
-                </label>
+  const [code, setCode] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [district, setDistrict] = useState('');
+  const [password1, setPassword1] = useState('');
+  const [password2, setPassword2] = useState('');
+  const [licence, setLicence] = useState('');
 
-                <Form.Control type="email" placeholder="Enter hospital email" />
+  // _____________STATE
+  let globalRegisterHandler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    if (name === 'register_name_field') {
+      setName(value);
+    } else if (name === 'register_email_field') {
+      setEmail(value);
+    } else if (name === 'register_password1_field') {
+      setPassword1(value);
+    } else if (name === 'register_password2_field') {
+      setPassword2(value);
+    } else if (name === 'register_licence_field') {
+      setLicence(value);
+    } else if (name === 'register_district_field') {
+      setDistrict(value);
+    }
+  };
+  let registerHandler = (e) => {
+    e.preventDefault();
+    console.log(name, email, district, password1, password2, licence);
 
-                {/* ___________________hospital password field */}
-                <label
-                  id="defaultFormLable"
-                  className="poppins_semibold_600"
-                  htmlFor="default-radio"
-                >
-                  Hospital Password
-                </label>
+    if (
+      name.length === 0 ||
+      email.length === 0 ||
+      district.length === 0 ||
+      password1 === 0 ||
+      password2 === 0 ||
+      licence.length === 0
+    ) {
+      toast.warning('All fields are required');
+    } else {
+      //? _______________register to server
+      axios
+        .post('http://localhost:5000/api/register/hospital', {
+          data: {
+            name: name,
+            email: email,
+            district: district,
+            password1: password1,
+            password2: password2,
+            licence: licence,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
 
-                <Form.Control type="password" placeholder="Enter password" />
-                {/* ___________________third */}
-                <label
-                  id="defaultFormLable"
-                  className="poppins_semibold_600"
-                  htmlFor="default-radio"
-                >
-                  Confirm Password
-                </label>
-                {/* ___________________confirm password */}
-                <label
-                  id="defaultFormLable"
-                  className="poppins_semibold_600"
-                  htmlFor="default-radio"
-                >
-                  Licence Key
-                </label>
+          if (res.data.message === 'registrationSuccessful') {
+            toast.success('registered success');
+            console.log(res.data.data.code);
+            setCode(res.data.data.code);
+            emptyAllField();
+          } else {
+            toast.error(res.data.message);
+            emptyAllField();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
 
-                <Form.Control type="password" placeholder="Confirm password" />
-                {/* ___________________hospital licence key */}
-                <label
-                  id="defaultFormLable"
-                  className="poppins_semibold_600"
-                  htmlFor="default-radio"
-                >
-                  Licence Key
-                </label>
+  // _________form control
+  useEffect(() => {
+    // --------------Gvariable
+    const password2Field = document.getElementById('register_password2_field');
 
-                <Form.Control type="text" placeholder="Enter email" />
+    if (password1 !== password2) {
+      password2Field.style.border = '1px solid red';
+    }
+    if (password1 === password2) {
+      password2Field.style.border = '1px solid transparent';
+    }
+  }, [password1, password2]);
 
-                {/* -------------hospital district field */}
-                <label
-                  id="defaultFormLable"
-                  className="poppins_semibold_600"
-                  htmlFor="default-radio"
-                >
-                  Hospital District
-                </label>
+  if (props.isLoggedInProps === false) {
+    return (
+      <>
+        <div className="containerCenter">
+          <div className="contentBlock">
+            <form id="RegisterPageI" onSubmit={registerHandler}>
+              <div id="rightDivision">
+                <section id="formContainer">
+                  <h1>{code}</h1>
+                  <h1 className="poppins_medium_500">
+                    Let's protect yourself and those <br /> around you by
+                    vaccinating{' '}
+                  </h1>
 
-                {/* <!--Make sure the form has the autocomplete function switched off:--> */}
-                <form autocomplete="off" action="/action_page.php" />
-                <div class="autocomplete" style={{ width: '300px' }} />
+                  {/* _______________________hospital name  */}
+                  <label
+                    id="defaultFormLable"
+                    className="poppins_semibold_600"
+                    htmlFor="default-radio"
+                  >
+                    Hospital Name
+                  </label>
 
-                <Form.Control
-                  id="myInput"
-                  type="text"
-                  placeholder="Enter hospital district"
-                />
-              </section>
+                  <Form.Control
+                    required
+                    id="register_name_field"
+                    name="register_name_field"
+                    onChange={globalRegisterHandler}
+                    type="text"
+                    placeholder="Enter hospital name"
+                  />
+                  {/* ___________________hospitla email */}
+                  <label
+                    id="defaultFormLable"
+                    className="poppins_semibold_600"
+                    htmlFor="default-radio"
+                  >
+                    Hospital Email
+                  </label>
 
-              <div className="formSubmitContainer">
-                <Button variant="primary" type="submit">
-                  Register
-                </Button>
+                  <Form.Control
+                    required
+                    id="register_email_field"
+                    name="register_email_field"
+                    onChange={globalRegisterHandler}
+                    type="email"
+                    placeholder="Enter hospital email"
+                  />
+
+                  {/* ___________________hospital password field */}
+                  <label
+                    id="defaultFormLable"
+                    className="poppins_semibold_600"
+                    htmlFor="default-radio"
+                  >
+                    Hospital Password
+                  </label>
+
+                  <Form.Control
+                    required
+                    id="register_password1_field"
+                    name="register_password1_field"
+                    onChange={globalRegisterHandler}
+                    type="password"
+                    placeholder="Enter password"
+                  />
+                  {/* ___________________confirm password */}
+
+                  <label
+                    id="defaultFormLable"
+                    className="poppins_semibold_600"
+                    htmlFor="default-radio"
+                  >
+                    Confirm Password
+                  </label>
+
+                  <Form.Control
+                    required
+                    id="register_password2_field"
+                    name="register_password2_field"
+                    onChange={globalRegisterHandler}
+                    type="password"
+                    placeholder="Confirm password"
+                  />
+
+                  {/* ___________________hospital licence key */}
+                  <label
+                    id="defaultFormLable"
+                    className="poppins_semibold_600"
+                    htmlFor="default-radio"
+                  >
+                    Licence Key
+                  </label>
+
+                  <Form.Control
+                    required
+                    id="register_licence_field"
+                    name="register_licence_field"
+                    onChange={globalRegisterHandler}
+                    type="text"
+                    placeholder="Enter email"
+                  />
+
+                  {/* -------------hospital district field */}
+                  <label
+                    id="defaultFormLable"
+                    className="poppins_semibold_600"
+                    htmlFor="default-radio"
+                  >
+                    Hospital District
+                  </label>
+
+                  {/* <!--Make sure the form has the autocomplete function switched off:--> */}
+                  <form autocomplete="off" action="/action_page.php" />
+                  <div class="autocomplete" style={{ width: '300px' }} />
+
+                  <Form.Control
+                    required
+                    id="register_district_field"
+                    name="register_district_field"
+                    onChange={globalRegisterHandler}
+                    id="myInput"
+                    type="text"
+                    placeholder="Enter hospital district"
+                  />
+                </section>
+
+                <div className="formSubmitContainer">
+                  <Button variant="primary" type="submit">
+                    Register
+                  </Button>
+                </div>
               </div>
-            </div>
-          </main>
+            </form>
+          </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
+  } else {
+    return <Redirect to="/dashboardpage"></Redirect>;
+  }
 };
 
 export default RegisterPageI;

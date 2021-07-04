@@ -3,7 +3,7 @@ import logo from '../../img/companyLogo.png';
 import BlueGhostBtn from './BlueGhostBtn';
 import { Link } from 'react-router-dom';
 export default function Header(props) {
-  if (props.isLoggedInProps === 'true') {
+  if (props.isLoggedInProps === true) {
     return <div></div>;
   } else {
     return (

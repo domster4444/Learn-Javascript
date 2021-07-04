@@ -8,7 +8,7 @@ import process_image4 from '../../img/generalImage/process_image4.png';
 import process_image5 from '../../img/generalImage/process_image5.png';
 
 export default function Process(props) {
-  if (props.isLoggedInProps === 'false') {
+  if (props.isLoggedInProps === false) {
     return (
       <>
         <div className="containerCenter">
@@ -140,6 +140,6 @@ export default function Process(props) {
       </>
     );
   } else {
-    return <Redirect to="/welcomehome" />;
+    return <Redirect to="/dashboardpage" />;
   }
 }

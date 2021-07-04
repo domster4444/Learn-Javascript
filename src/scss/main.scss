@@ -33,7 +33,9 @@
 @import '4-layout/toolbar';
 
 //? 5-MODULES
-@import '5-modules/dashboardCard';
+
+@import '5-modules/initialDetailSetup';
+@import '5-modules/overallpie-chart';
 @import '5-modules/tostifyToasts';
 @import '5-modules/dropDown';
 @import '5-modules/breadCrumb';
@@ -62,7 +64,9 @@
 @import '5-modules/serviceSection';
 
 //? 5-PAGES
-@import '6-pages/adminDashboard';
+@import '6-pages/dashboardHomeBody';
+@import '6-pages/dashboardBody';
+@import '6-pages/recoveredPatientBody';
 @import '6-pages/ourteampage';
 @import '6-pages/servicepage';
 @import '6-pages/pageNotFound';
@@ -70,3 +74,5 @@
 @import '6-pages/registerpageI';
 @import '6-pages/homepage';
 @import '6-pages/servicepage';
+@import '5-modules/dashboardNav';
+@import '5-modules/dashboardToolbar';

@@ -1,4 +1,10 @@
 #LoginPageI {
+  margin-top: 7rem;
+  @include media('<=900px') {
+    margin-top: 0rem;
+  }
+  box-shadow: 0px 10px 30px 0px #d6d6d6;
+
   padding: 1rem 1.2rem;
   display: flex;
   border-radius: 2rem;
@@ -7,6 +13,7 @@
   justify-content: space-between;
 
   #leftDivision {
+    padding: 2rem;
   }
   #rightDivision {
     input {

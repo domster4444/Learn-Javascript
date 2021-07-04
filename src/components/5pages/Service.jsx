@@ -20,7 +20,7 @@ import ServiceDescriptionType2 from '../2molecules/ServiceDescriptionType2';
 
 export default function Service(props) {
   console.log(props.isLoggedInProps);
-  if (props.isLoggedInProps === 'false') {
+  if (props.isLoggedInProps === false) {
     return (
       <>
         <main id="servicePageMain">
@@ -197,6 +197,6 @@ export default function Service(props) {
       </>
     );
   } else {
-    return <Redirect to="/welcomehome" />;
+    return <Redirect to="/dashboardpage" />;
   }
 }
