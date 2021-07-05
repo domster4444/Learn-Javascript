@@ -45,24 +45,40 @@ const DashboardPage = (props) => {
         btn.classList.replace('bx-menu-alt-right', 'bx-menu');
       }
     };
-    // anyNodeOnClickOpenSideBar.onclick = function () {
-    //   sidebar.classList.toggle('active');
-    // };
 
-    // ????initialHospitalDetailsetup or not?? the server sends res whether already setup or not
-    //??????? ___________already setup or not with this hospital code
+    // *__________________________________________________________________________________-
 
-    if (props.isInitialHospitalAlreadySet === false) {
-      // -----------------------if initial details are not set=> show model ------------------------------
-      setShow(true);
-    } else {
-      // -----------------------if initial details are not set=>hide model ------------------------------
-      setShow(false);
-    }
+    axios
+      .post('http://localhost:5000/api/isAlreadySetup', {
+        data: {
+          code: props.loggedInHospitalDetail.loggedInHospitalCode,
+        },
+      })
+      .then((res) => {
+        console.log(`😀😂👌❤️😍---->  `);
+        console.log(res.data.message);
+        if (res.data.message === 'allowedToShowModel') {
+          props.setIsInitialHospitalAlreadySet(false);
+        } else {
+          props.setIsInitialHospitalAlreadySet(true);
+        }
 
-    // ---------------------------------------------------------------------------------------------------
+        // ????initialHospitalDetailsetup or not?? the server sends res whether already setup or not
+        //??????? ___________already setup or not with this hospital code
 
-    // --------------------------------------------------------------------------------------
+        if (props.isInitialHospitalAlreadySet === false) {
+          // -----------------------if initial details are not set=> show model ------------------------------
+          setShow(true);
+        } else {
+          // -----------------------if initial details are not set=>hide model ------------------------------
+          setShow(false);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    // *__________________________________________________________________________________-
   }, []);
 
   //check show state on every rerender
@@ -97,6 +113,7 @@ const DashboardPage = (props) => {
     let noOfTotalCovidPatientField = document.getElementById(
       'totalCovidInputField'
     );
+    let hospitalPhNo = document.getElementById('hospitalPhNo');
 
     // ?value of respective form fields (dynamic data depending upon hospitals)
     const noOfOxyCylVal = noOfOxyCylField.value;
@@ -108,6 +125,7 @@ const DashboardPage = (props) => {
     const noOfTripleVaccinatedPatientVal =
       noOfTripleVaccinatedPatientField.value;
     const noOfTotalCovidPatientVal = noOfTotalCovidPatientField.value;
+    const hospitalPhNoVal = hospitalPhNo.value;
     console.log('FORM SUBMITTED MODEL FORM SUBMITTED');
     //?server accepts the following datas for initial data setup
     // hospitalCode;
@@ -139,9 +157,11 @@ const DashboardPage = (props) => {
           noOfDoubleVaccinatedPatient: noOfDoubleVaccinatedPatientVal,
           noOfTripleVaccinatedPatient: noOfTripleVaccinatedPatientVal,
           noOfTotalCovidPatient: noOfTotalCovidPatientVal,
+          hospitalPhNo: hospitalPhNoVal,
         },
       })
       .then((res) => {
+        props.setLoggedInHotpitalPhNo(hospitalPhNoVal);
         if (res.data.message === 'successfully saved allhospitaldetail') {
           console.log(res.data);
           console.log('----------Initial DATA  SAVED');
@@ -209,7 +229,7 @@ const DashboardPage = (props) => {
                   <Form.Control
                     id="doubleVaccinatedInputField"
                     type="number"
-                    placeholder="Enter email"
+                    placeholder=" Enter how many patient had 2 vaccine"
                   />
                   <Form.Label className="poppins_medium_500">
                     No of triple vaccinated people
@@ -217,7 +237,7 @@ const DashboardPage = (props) => {
                   <Form.Control
                     id="tripleVaccinatedInputField"
                     type="number"
-                    placeholder="Enter email"
+                    placeholder="Enter how many patient had 3 vaccine"
                   />
                   <Form.Label className="poppins_medium_500">
                     Total Covid Patient
@@ -225,7 +245,15 @@ const DashboardPage = (props) => {
                   <Form.Control
                     id="totalCovidInputField"
                     type="number"
-                    placeholder="Enter email"
+                    placeholder="Enter total covid patient in your hospital"
+                  />
+                  <Form.Label className="poppins_medium_500">
+                    Hospital Phone No
+                  </Form.Label>
+                  <Form.Control
+                    id="hospitalPhNo"
+                    type="number"
+                    placeholder="Enter hospital phone no"
                   />
                 </section>
               </Modal.Body>
@@ -339,14 +367,22 @@ const DashboardPage = (props) => {
             <Route
               exact
               path="/dashboardpage"
-              component={() => <DashboardBody />}
+              component={() => (
+                <DashboardBody
+                  loggedInHospitalDetail={props.loggedInHospitalDetail}
+                />
+              )}
             />
             {/*//? __________end______BODY CONTENT  */}
 
             <Route
               exact
               path="/recoveredpatient"
-              component={() => <RecoveredPatientBody />}
+              component={() => (
+                <RecoveredPatientBody
+                  loggedInHospitalDetail={props.loggedInHospitalDetail}
+                />
+              )}
             />
           </div>
         </div>

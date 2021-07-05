@@ -11,7 +11,11 @@ const PrivateRoute = (props) => {
           component={() => {
             return (
               <DashboardPage
+                setLoggedInHotpitalPhNo={props.setLoggedInHotpitalPhNo}
                 isInitialHospitalAlreadySet={props.isInitialHospitalAlreadySet}
+                setIsInitialHospitalAlreadySet={
+                  props.setIsInitialHospitalAlreadySet
+                }
                 loggedInHospitalDetail={props.loggedInHospitalDetail}
               />
             );

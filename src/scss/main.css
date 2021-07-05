@@ -6,7 +6,6 @@
  *
  * Copyright (c) 2021 Animate.css
  */
-@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 :root {
   --animate-duration: 1s;
@@ -3820,174 +3819,17 @@ a:visited {
   background: #333f48 !important;
 }
 
-#welcomeHome nav .circularProfiler {
-  height: 5rem;
-  width: 5rem;
-  border-radius: 50%;
-  border: 0.5rem solid lightgray;
-  background-image: url(../img/accounts/minionavatar.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-#welcomeHome nav .circularProfiler span {
-  float: right;
-  line-height: 5rem;
-  font-size: 2.8rem;
-  cursor: pointer;
-}
-
-#welcomeHome nav .tooltip {
-  position: absolute;
-  right: 2rem;
-  bottom: -2rem;
-  height: 1.5rem;
-  width: 1.5rem;
-  background: #242526;
-  transform: rotate(45deg);
-  display: none;
-}
-
-#welcomeHome nav .tooltip.show {
-  display: block;
-}
-
-#welcomeHome nav .wrapper {
-  position: absolute;
-  top: 65px;
-  display: flex;
-  width: 400px;
-  overflow: hidden;
-  border-radius: 5px;
-  display: none;
-  transition: all 0.3s ease;
-  background-image: linear-gradient(0deg, #301cab, #4448d3 52%, #5774fa);
-  z-index: 100;
-  top: 7.5rem;
-  right: 0;
-  background-image: linear-gradient(0deg, #301cab, #4448d3 52%, #5774fa);
-}
-
-@media (max-width: 495px) {
-  #welcomeHome nav .wrapper {
-    transform: scale(0.8);
-    position: absolute;
-    top: 5rem;
-    right: -4rem;
-  }
-}
-
-@media (max-width: 429px) {
-  #welcomeHome nav .wrapper {
-    top: 5rem;
-  }
-}
-
-@media (max-width: 417px) {
-  #welcomeHome nav .wrapper {
-    transform: scale(0.7) !important;
-    position: absolute;
-    top: 6rem;
-    right: -6rem;
-  }
-}
-
-#welcomeHome nav .wrapper.show {
-  display: block;
-  display: flex;
-}
-
-#welcomeHome .wrapper ul {
-  width: 400px;
-  list-style: none;
-  padding: 1rem;
-  transition: all 0.3s ease;
-}
-
-#welcomeHome .wrapper ul li {
-  line-height: 5.5rem;
-}
-
-#welcomeHome .wrapper ul li a {
-  position: relative;
-  color: white;
-  font-size: 1.8rem;
-  font-weight: 500;
-  padding: 0 1rem;
-  display: flex;
-  border-radius: 0.8rem;
-  align-items: center;
-  text-decoration: none;
-}
-
-#welcomeHome .wrapper ul li:hover a {
-  background: white;
+#dropdown-basic {
+  background: transparent !important;
+  font-size: 2.1rem;
+  border: none;
   color: black;
 }
 
-#welcomeHome .wrapper ul li:hover a > .icon {
-  background: white;
-}
-
-#welcomeHome .wrapper ul li:hover a > .icon span {
-  color: #546df4;
-}
-
-#welcomeHome ul li a .icon {
-  height: 4rem;
-  width: 4rem;
-  margin-right: 1.3rem;
-  background-color: transparent;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  border-radius: 50%;
-}
-
-#welcomeHome ul li a .icon span {
-  line-height: 4rem;
-  font-size: 2rem;
-  color: white;
-}
-
-#welcomeHome ul li a i {
-  position: absolute;
-  right: 1rem;
-  font-size: 2.5rem;
-  pointer-events: none;
-}
-
-#welcomeHome .wrapper ul.setting-drop,
-#welcomeHome .wrapper ul.help-drop {
-  display: none;
-}
-
-#welcomeHome .wrapper .arrow {
-  padding-left: 1rem;
-  font-size: 2rem;
-  font-weight: 500;
-  color: white;
-  cursor: pointer;
-}
-
-#welcomeHome .wrapper .arrow span {
-  margin-right: 1.5rem;
-}
-
-#accountRepresentativeContainer {
-  border-radius: 5rem;
-  padding: 0.5rem;
-  display: flex;
-  background-color: #5774fa;
-  align-items: center;
-}
-
-#userAccountName {
-  margin-left: 1.2rem;
-  margin-right: 1.2rem;
-  color: white;
-  font-size: 1.7rem;
+.dropdown-menu.show {
+  transform: scale(1.5) !important;
+  top: 6rem !important;
+  left: 3rem !important;
 }
 
 #breadCrumb {
@@ -5316,73 +5158,63 @@ body::-webkit-scrollbar-thumb {
 }
 
 #heroSection {
-  margin-top: 5rem;
+  width: 172.3rem;
+  height: 75rem;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  align-items: center;
+  background-position-y: 1rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url(../img//general/herosection-bg.jpg);
 }
 
-#heroSection #leftBlock {
-  padding-top: 3rem;
-  display: flex;
-  flex-direction: column;
-}
-
-@media (max-width: 660px) {
-  #heroSection #leftBlock {
-    align-items: center;
+@media (max-width: 788px) {
+  #heroSection {
+    width: 100vw;
   }
 }
 
-#heroSection #leftBlock h1 {
-  font-size: 3.2rem;
-  line-height: 3rem;
-}
-
-#heroSection #leftBlock h1 span {
-  font-weight: 500;
-  font-size: 2.9rem;
-}
-
-@media (max-width: 360px) {
-  #heroSection #leftBlock h1 {
-    padding-left: 2rem;
+@media (max-width: 788px) {
+  #heroSection {
+    height: 60vw;
   }
 }
 
-#heroSection #rightBlock {
-  flex-wrap: wrap;
-  display: flex;
-  justify-content: center;
+#heroSection h1 {
+  font-size: 5.6rem;
+  color: #00234b;
 }
 
-#heroSection #rightBlock h3 {
-  margin-top: 2.7rem;
-  font-size: 2.8rem;
+@media (max-width: 788px) {
+  #heroSection h1 {
+    font-size: 2.6rem;
+  }
 }
 
-#heroSection #rightBlock button {
-  outline: none;
-  margin-top: 2.7rem;
+#heroSection h2 {
+  color: #00234b;
 }
 
-#heroSection #rightBlock button:active {
-  transform: scale(1.05);
+@media (max-width: 788px) {
+  #heroSection h2 {
+    font-size: 1.6rem;
+  }
 }
 
-#heroSection #rightBlock .blueBtn {
-  margin-top: 5.5rem;
+#heroSection button {
   box-shadow: 0px 10px 30px 0px rgba(44, 130, 237, 0.4) !important;
-  background-image: linear-gradient(40deg, #2c82ed 0%, #38d0fc 100%) !important;
-  font-size: 1.3rem;
+  background: #0065ff;
+  margin-top: 2rem;
+  font-size: 2.17rem;
+  padding: 0.5rem 2rem;
 }
 
-#heroSection #rightBlock #right img {
-  animation-name: float;
-  animation-duration: 3.8s;
-  animation-iteration-count: infinite;
-  transition: all 3.8s;
-  height: 40rem;
+@media (max-width: 788px) {
+  #heroSection button {
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.4rem;
+    font-size: 1.6rem;
+  }
 }
 
 #serviceCard {
@@ -5499,6 +5331,10 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   font-size: 1.8rem;
   padding: 0.5rem 2rem;
+}
+
+#ourTeamPage .joinBtn {
+  color: white;
 }
 
 #ourTeamPage #teamInfoSection {

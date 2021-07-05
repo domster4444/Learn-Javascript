@@ -5,7 +5,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Header from '../src/components/1atoms/Header';
-
+import CovidStatusPage from '../src/components/5pages/CovidStatus.jsx';
+import HospitalService from '../src/components/5pages/HospitalService.jsx';
 import HomePage from './components/5pages/HomePage';
 import SignUpPage from './components/5pages/RegisterPageI';
 import LoginPage from './components/5pages/LoginPageI';
@@ -23,12 +24,14 @@ function App() {
   const [loggedInHospitalName, setLoggedInHospitalName] = useState('');
   const [loggedInHospitalEmail, setLoggedInHospitalEmail] = useState('');
   const [loggedInHospitalDistrict, setLoggedInHospitalDistrict] = useState('');
+  const [loggedInHotpitalPhNo, setLoggedInHotpitalPhNo] = useState('');
 
   let loggedInHospitalDetail = {
     loggedInHospitalCode: loggedInHospitalCode,
     loggedInHospitalName: loggedInHospitalName,
     loggedInHospitalEmail: loggedInHospitalEmail,
     loggedInHospitalDistrict: loggedInHospitalDistrict,
+    loggedInHotpitalPhNo: loggedInHotpitalPhNo,
   };
   // _________________STATE FOR ALL HOSPITAL DATA AFTER LOGGEDIN end
 
@@ -77,6 +80,14 @@ function App() {
           path="/service"
           component={() => <Service isLoggedInProps={isLoggedIn} />}
         />
+        <Route
+          path="/hospitalservice"
+          component={() => <HospitalService isLoggedInProps={isLoggedIn} />}
+        />
+        <Route
+          path="/covidstatus"
+          component={() => <CovidStatusPage isLoggedInProps={isLoggedIn} />}
+        />
 
         <Route
           path="/ourteam"
@@ -85,11 +96,13 @@ function App() {
 
         {/* ________________________PRIVATE ROUTES  */}
         <PrivateRoute
+          setLoggedInHotpitalPhNo={setLoggedInHotpitalPhNo}
           // ------------ALL CURRENT USER DATA
           loggedInHospitalDetail={loggedInHospitalDetail}
           // currentUser={currentUser}
           //? pass isInitialHospitalAlreadySet to specify if  needed to show model or not
           isInitialHospitalAlreadySet={isInitialHospitalAlreadySet}
+          setIsInitialHospitalAlreadySet={setIsInitialHospitalAlreadySet}
           setLoggedInProps={setisLoggedIn}
           loggedInStateProps={isLoggedIn}
         />

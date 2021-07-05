@@ -3,9 +3,9 @@ import { useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
-const RecoveredPatientBody = () => {
-  // _______________________AUTOCOMPLETE
+const RecoveredPatientBody = (props) => {
   useEffect(() => {
+    // _______________________AUTOCOMPLETE start
     function autocomplete(inp, arr) {
       /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -196,19 +196,55 @@ const RecoveredPatientBody = () => {
 
     /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
     autocomplete(document.getElementById('myInput'), countries);
+    // _______________________AUTOCOMPLETE end
+
+    //?fetch hospital ph no from insitalDetailSetupCluster using hospital code of props.loggedinhospitaldetails
   }, []);
-  // ============AUTO COMPLETE END
+  //?======================== form handler start
+
+  // patientId: patientId,
+  // patientName: patientName,
+  // patientDoge: patientDoge,
+  // patientAddress: patientAddress,
+  // hotpitalPhNo: hotpitalPhNo,
+  // hospitalDistrict: hospitalDistrict,
+  // hospitalEmail: hospitalEmail,
+  // hospitalName: hospitalName,
+
+  // global form handler
+  let globalPatientRecoveredFormHandler = (e) => {
+    e.preventDefault();
+    let patientIdVal = document.getElementById('patient-id').value;
+    let patientNameVal = document.getElementById('patient-name').value;
+    let patientDogeVal = document.getElementById('patient-doge').value;
+    let patientAddress = document.getElementById('myInput').value;
+    /*
+    let hospitalPhNoVal=
+    let hospitalDistrictVal=
+    let hospitalEmailVal=
+    let hospitalName=
+  */
+    console.log('-----------🍌🍌🍌---------------');
+    console.log(patientIdVal);
+    console.log(patientNameVal);
+    console.log(patientDogeVal);
+    console.log(patientAddress);
+    console.log(props.loggedInHospitalDetail);
+    console.log('-------------🍌🍌🍌-------------');
+  };
+  //?======================== form handler end
 
   return (
     <>
       <main id="recoveredPatientBody">
         <div className="containerCenter">
           <div className="contentBlock">
-            <Form>
+            <Form onSubmit={globalPatientRecoveredFormHandler}>
               <Form.Row>
                 <Form.Group as={Col} controlId="formGridEmail">
                   <Form.Label>Patient Name</Form.Label>
                   <Form.Control
+                    id="patient-name"
                     required
                     type="text"
                     placeholder="Enter Patient Name"
@@ -218,6 +254,7 @@ const RecoveredPatientBody = () => {
                 <Form.Group as={Col} controlId="formGridPassword">
                   <Form.Label>No of doge took</Form.Label>
                   <Form.Control
+                    id="patient-doge"
                     required
                     type="text"
                     placeholder="Enter no of doge"
@@ -225,19 +262,9 @@ const RecoveredPatientBody = () => {
                 </Form.Group>
               </Form.Row>
 
-              <Form.Group controlId="formGridAddress1">
-                <Form.Label>Home Address</Form.Label>
-                <Form.Control required placeholder="1234 Main St" />
-              </Form.Group>
-
-              <Form.Group controlId="formGridAddress2">
-                <Form.Label>Email</Form.Label>
-                <Form.Control placeholder="Enter Patient Email" />
-              </Form.Group>
-
               <Form.Row>
                 <Form.Group as={Col} controlId="formGridCity">
-                  <Form.Label>District</Form.Label>
+                  <Form.Label>Patient HomeTown District</Form.Label>
 
                   <form autocomplete="off">
                     <div
@@ -255,10 +282,11 @@ const RecoveredPatientBody = () => {
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridZip">
-                  <Form.Label>Phone No</Form.Label>
+                  <Form.Label>Patient ID </Form.Label>
                   <Form.Control
+                    id="patient-id"
                     required
-                    type="text "
+                    type="text"
                     placeholder="Enter Phone no"
                   />
                 </Form.Group>

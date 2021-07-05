@@ -2,6 +2,8 @@ import React from 'react';
 import logo from '../../img/companyLogo.png';
 import BlueGhostBtn from './BlueGhostBtn';
 import { Link } from 'react-router-dom';
+import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
+import Dropdown from 'react-bootstrap/esm/Dropdown';
 export default function Header(props) {
   if (props.isLoggedInProps === true) {
     return <div></div>;
@@ -22,8 +24,29 @@ export default function Header(props) {
                 </li>
 
                 <li className="cursor poppins_regular_400">
-                  <Link to="/service">Services</Link>
+                  <Link to="/service">Know Us</Link>
                 </li>
+                <Dropdown
+                  id="headerDropdown"
+                  className="cursor poppins_regular_400"
+                >
+                  <Dropdown.Toggle
+                    className="poppins_regular_400"
+                    variant="success"
+                    id="dropdown-basic"
+                  >
+                    Services
+                  </Dropdown.Toggle>
+
+                  <Dropdown.Menu>
+                    <Dropdown.Item href="#/action-2">
+                      <Link to="/hospitalservice">Hospital Services</Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item href="#/action-3">
+                      <Link to="/covidstatus">Covid Status</Link>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
 
                 <li className="cursor poppins_regular_400">
                   <Link to="/ourteam">Our Team</Link>
