@@ -380,6 +380,7 @@ const DashboardPage = (props) => {
               path="/recoveredpatient"
               component={() => (
                 <RecoveredPatientBody
+                  setLoggedInHotpitalPhNo={props.setLoggedInHotpitalPhNo}
                   loggedInHospitalDetail={props.loggedInHospitalDetail}
                 />
               )}

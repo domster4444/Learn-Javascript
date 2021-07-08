@@ -34,6 +34,8 @@
 
 //? 5-MODULES
 
+@import '5-modules/notification';
+@import '5-modules/plasmaListGroup';
 @import '5-modules/initialDetailSetup';
 @import '5-modules/overallpie-chart';
 @import '5-modules/tostifyToasts';
@@ -64,6 +66,8 @@
 @import '5-modules/serviceSection';
 
 //? 5-PAGES
+@import '6-pages/districtStatsPage';
+@import '6-pages/hospitalServicePage';
 @import '6-pages/dashboardHomeBody';
 @import '6-pages/dashboardBody';
 @import '6-pages/recoveredPatientBody';

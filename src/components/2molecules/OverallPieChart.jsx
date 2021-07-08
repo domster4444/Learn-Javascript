@@ -1,62 +1,62 @@
 import React from 'react';
-import { Pie, Doughnut } from 'react-chartjs-2';
+import { Bar, Line, Pie } from 'react-chartjs-2';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-const state = {
-  labels: ['January', 'February', 'March', 'April', 'May'],
-  datasets: [
-    {
-      label: 'Rainfall',
-      backgroundColor: ['#B21F00', '#C9DE00', '#2FDE00', '#00A6B4', '#6800B4'],
-      hoverBackgroundColor: [
-        '#501800',
-        '#4B5000',
-        '#175000',
-        '#003350',
-        '#35014F',
-      ],
-      data: [65, 59, 80, 81, 56],
+function OverallPieChart(props) {
+  console.log(props);
+  const barData = {
+    labels: ['Zero Doge', 'Single Doge', 'Double Doge', 'Triple Doge'],
+    datasets: [
+      {
+        label: 'test label',
+        data: [
+          props.noOf0DogePatient,
+          props.noOf1DogePatient,
+          props.noOf2DogePatient,
+          props.noOf3DogePatient,
+        ],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.6)',
+          'rgba(54, 162, 235, 0.6)',
+          'rgba(255, 206, 86, 0.6)',
+          'rgba(75, 192, 192, 0.6)',
+        ],
+        borderWidth: 3,
+      },
+    ],
+  };
+  // set options
+  const [barOptions, setBarOptions] = useState({
+    options: {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+          },
+        ],
+      },
+      title: {
+        display: true,
+        text: 'Data Orgranized In Bars',
+        fontSize: 25,
+      },
+      legend: {
+        display: true,
+        position: 'top',
+      },
     },
-  ],
-};
+  });
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <section className="dualChartContainer">
-        <div id="pie-chart">
-          <Pie
-            data={state}
-            options={{
-              title: {
-                display: true,
-                text: 'Average Rainfall per month',
-                fontSize: 20,
-              },
-              legend: {
-                display: true,
-                position: 'right',
-              },
-            }}
-          />
-        </div>
-
-        <div id="doughnut-chart">
-          <Doughnut
-            data={state}
-            options={{
-              title: {
-                display: true,
-                text: 'Average Rainfall per month',
-                fontSize: 20,
-              },
-              legend: {
-                display: true,
-                position: 'right',
-              },
-            }}
-          />
-        </div>
-      </section>
-    );
-  }
+  return (
+    <>
+      <div className="BarExample">
+        <Pie data={barData} options={barOptions.options} />
+      </div>
+    </>
+  );
 }
+
+export default OverallPieChart;

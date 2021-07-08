@@ -33,9 +33,9 @@ export default function FeatCarousel() {
           />
 
           <h1>
-            Access From Your
+            Access All The Services
             <br />
-            Home
+            From Your Home
           </h1>
         </div>
         <div className="carousel-cell" id="secondCard">
@@ -50,10 +50,28 @@ export default function FeatCarousel() {
             alt="representation of "
           />
           <h1>
-            High Quality Services
-            <br /> With Low Price
+            Get The Latest Update Of
+            <br /> The Hospitals Around YOu
           </h1>
         </div>
+
+        <div className="carousel-cell" id="fourthCard">
+          <img
+            className="mainCarouselIcons"
+            src={carouselIcon4}
+            alt="representation of "
+          />
+          <img
+            className="subCarouselIcons"
+            src={subCarouselIcon4}
+            alt="representation of "
+          />
+          <h1>
+            All Nepal Covid Stats
+            <br /> From Most Reliable Sources
+          </h1>
+        </div>
+
         <div className="carousel-cell" id="thirdCard">
           <img
             className="mainCarouselIcons"
@@ -67,21 +85,8 @@ export default function FeatCarousel() {
           />
           <h1>
             Instant Customer Care
-            <br /> Support On Demand
+            <br /> Helpline Available
           </h1>
-        </div>
-        <div className="carousel-cell" id="fourthCard">
-          <img
-            className="mainCarouselIcons"
-            src={carouselIcon4}
-            alt="representation of "
-          />
-          <img
-            className="subCarouselIcons"
-            src={subCarouselIcon4}
-            alt="representation of "
-          />
-          <h1>Secure & Trust Worthy</h1>
         </div>
         <div className="carousel-cell" id="fifthCard">
           <img
@@ -94,7 +99,11 @@ export default function FeatCarousel() {
             src={subCarouselIcon5}
             alt="representation of "
           />
-          <h1>50+ Services To Solve Your Problems</h1>
+          <h1>
+            {' '}
+            Find Healthcare Nearby
+            <br /> And Get Help now!
+          </h1>
         </div>
       </div>
     </>

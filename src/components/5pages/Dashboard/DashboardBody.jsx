@@ -5,7 +5,51 @@ import { useEffect } from 'react';
 import OverallPieChart from '../../2molecules/OverallPieChart';
 // react bstrp
 import Form from 'react-bootstrap/Form';
+import ListGroup from 'react-bootstrap/ListGroup';
+import Table from 'react-bootstrap/Table';
+import axios from 'axios';
 const DashboardBody = () => {
+  const [noOf0DogePatient, setNoOf0DogePatient] = useState(0);
+  const [noOf1DogePatient, setNoOf1DogePatient] = useState(0);
+  const [noOf2DogePatient, setNoOf2DogePatient] = useState(0);
+  const [noOf3DogePatient, setNoOf3DogePatient] = useState(0);
+  //* __________________________STATE
+
+  const [isAllRecoveredPatientDataLoaded, setRecoveredPatientDataLoadedState] =
+    useState(false);
+  const [allRecoveredPatientData, setAllRecoveredPaitentData] = useState([]);
+
+  useEffect(() => {
+    if (isAllRecoveredPatientDataLoaded === true) {
+      console.log('**Changed** ALlRecoveredPatientData');
+      console.log(allRecoveredPatientData);
+      let patientThatTook0Doge = 0;
+      let patientThatTook1Doge = 0;
+      let patientThatTook2Doge = 0;
+      let patientThatTook3Doge = 0;
+      for (let i of allRecoveredPatientData) {
+        if (i.patientDoge === '0') {
+          patientThatTook0Doge += 1;
+        } else if (i.patientDoge === '1') {
+          patientThatTook1Doge += 1;
+        } else if (i.patientDoge === '2') {
+          patientThatTook2Doge += 1;
+        } else if (i.patientDoge === '3') {
+          patientThatTook3Doge += 1;
+        }
+      }
+      console.log('patientThatTook0Doge' + patientThatTook0Doge);
+      console.log('patientThatTook1Doge' + patientThatTook1Doge);
+      console.log('patientThatTook2Doge' + patientThatTook2Doge);
+      console.log('patientThatTook3Doge' + patientThatTook3Doge);
+
+      setNoOf0DogePatient(patientThatTook0Doge);
+      setNoOf1DogePatient(patientThatTook1Doge);
+      setNoOf2DogePatient(patientThatTook2Doge);
+      setNoOf3DogePatient(patientThatTook3Doge);
+    }
+  });
+
   //todo:option dropdown js
   // _______________________AUTOCOMPLETE
   useEffect(() => {
@@ -204,11 +248,27 @@ const DashboardBody = () => {
 
   // _______________________________________District ID handler
 
-  const [districtId, setDistrictId] = useState(0);
   let plasmaFormHandler = (e) => {
     e.preventDefault();
     let myInput = document.getElementById('myInput');
-    alert('value is ' + myInput.value);
+    let myDistrict = myInput.value;
+
+    // ______POST "district" key to server to get message:[{},{}]
+
+    axios
+      .post('http://localhost:5000/api/patient/recovered/district', {
+        data: {
+          district: myDistrict,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.message);
+        setAllRecoveredPaitentData(res.data.message);
+        setRecoveredPatientDataLoadedState(true);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <>
@@ -238,7 +298,144 @@ const DashboardBody = () => {
             >
               Find
             </button>
-            <OverallPieChart />
+            <OverallPieChart
+              noOf0DogePatient={noOf0DogePatient}
+              noOf1DogePatient={noOf1DogePatient}
+              noOf2DogePatient={noOf2DogePatient}
+              noOf3DogePatient={noOf3DogePatient}
+            />
+            {(() => {
+              if (isAllRecoveredPatientDataLoaded === true) {
+                console.log('**all recovered data loaded is  below***');
+                {
+                  /* console.log(allRecoveredPatientData[0].hospitalDistrict);
+                console.log(allRecoveredPatientData[0].hospitalEmail);
+                console.log(allRecoveredPatientData[0].hospitalName);
+                console.log(allRecoveredPatientData[0].hotpitalPhNo);
+                console.log(allRecoveredPatientData[0].patientAddress);
+                console.log(allRecoveredPatientData[0].patientDoge);
+                console.log(allRecoveredPatientData[0].patientId);
+                console.log(allRecoveredPatientData[0].patientName); */
+                }
+                return (
+                  <>
+                    {(() => {
+                      let newArr = [];
+                      for (let i = 0; i < allRecoveredPatientData.length; i++) {
+                        newArr.push(
+                          <>
+                            <div>
+                              <p></p>
+                            </div>
+                            <br />
+                            <ListGroup id="plasmaList-listContainer">
+                              <ListGroup.Item id="plasmaList">
+                                <Table hover>
+                                  <thead></thead>
+                                  <tbody>
+                                    <tr>
+                                      <td className="poppins_semibold_600">
+                                        Recovered At:
+                                      </td>
+                                      <td>
+                                        {
+                                          allRecoveredPatientData[i]
+                                            .hospitalName
+                                        }
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td className="poppins_semibold_600">
+                                        Patient Id:
+                                      </td>
+                                      <td>
+                                        {allRecoveredPatientData[i].patientId}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td className="poppins_semibold_600">
+                                        Patient Name:
+                                      </td>
+                                      <td>
+                                        {allRecoveredPatientData[i].patientName}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td className="poppins_semibold_600">
+                                        Patient Address:
+                                      </td>
+                                      <td>
+                                        {
+                                          allRecoveredPatientData[i]
+                                            .patientAddress
+                                        }
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td className="poppins_semibold_600">
+                                        No of doge Patient Took:
+                                      </td>
+                                      <td>
+                                        {allRecoveredPatientData[i].patientDoge}
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td className="poppins_semibold_600">
+                                        Hospital Email:
+                                      </td>
+                                      <td>
+                                        <a
+                                          href={
+                                            'mailto:' +
+                                            allRecoveredPatientData[i]
+                                              .hospitalEmail
+                                          }
+                                        >
+                                          {
+                                            allRecoveredPatientData[i]
+                                              .hospitalEmail
+                                          }
+                                        </a>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td className="poppins_semibold_600">
+                                        Hospital Contact No:
+                                      </td>
+                                      <td>
+                                        {
+                                          allRecoveredPatientData[i]
+                                            .hotpitalPhNo
+                                        }
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td className="poppins_semibold_600">
+                                        Hospital District:
+                                      </td>
+                                      <td>
+                                        {
+                                          allRecoveredPatientData[i]
+                                            .hospitalDistrict
+                                        }
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </Table>
+                                This Patient Agreed to Donate His Plasma 🟢
+                              </ListGroup.Item>
+                            </ListGroup>
+                          </>
+                        );
+                      }
+
+                      return newArr;
+                    })()}
+                  </>
+                );
+              }
+              return <></>;
+            })()}
           </div>
         </div>
       </main>

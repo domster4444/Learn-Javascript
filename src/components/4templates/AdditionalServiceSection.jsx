@@ -19,15 +19,15 @@ export default function AdditionalService() {
           />
           <AdditionalServiceCard
             title="Fast & Reliable"
-            desc="Get Your Work Done Faster"
+            desc="Fastest Update from Reliable Sources"
           />
           <AdditionalServiceCard
             title="Modern Interface"
             desc="Modern Solution"
           />
           <AdditionalServiceCard
-            title="Elegant UI"
-            desc="Beautiful User Interface"
+            title="All in One Plan"
+            desc="Get all the info in  single place"
           />
         </div>
       </div>

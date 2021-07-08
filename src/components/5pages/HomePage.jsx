@@ -17,10 +17,13 @@ import ExperienceSection from '../4templates/ExperienceSection';
 import Footer from '../4templates/Footer';
 import ArrowGhostCardSection from '../4templates/ArrowGhostCardSection';
 
+import Notice from '../1atoms/Notice';
+
 export default function Homepage(props) {
   if (props.isLoggedInProps === false) {
     return (
       <div id="homepage">
+        <Notice />
         {/* //Video modal should be at top */}
         <BackgroundBlob1 />
         <HeroSection></HeroSection>

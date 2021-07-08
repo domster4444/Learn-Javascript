@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 const RecoveredPatientBody = (props) => {
   useEffect(() => {
     // _______________________AUTOCOMPLETE start
@@ -197,9 +199,28 @@ const RecoveredPatientBody = (props) => {
     /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
     autocomplete(document.getElementById('myInput'), countries);
     // _______________________AUTOCOMPLETE end
-
     //?fetch hospital ph no from insitalDetailSetupCluster using hospital code of props.loggedinhospitaldetails
+
+    axios
+      .post('http://localhost:5000/api/fetchhospitalno', {
+        data: {
+          code: props.loggedInHospitalDetail.loggedInHospitalCode,
+        },
+      })
+      .then((res) => {
+        console.log(
+          'START fetch ph no by sending hospital code -fetchHospitalPhNo route🛕 '
+        );
+        props.setLoggedInHotpitalPhNo(res.data.message);
+        console.log(
+          'END fetch ph no by sending hospital code -fetchHospitalPhNo route🛕 '
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, []);
+
   //?======================== form handler start
 
   // patientId: patientId,
@@ -217,20 +238,41 @@ const RecoveredPatientBody = (props) => {
     let patientIdVal = document.getElementById('patient-id').value;
     let patientNameVal = document.getElementById('patient-name').value;
     let patientDogeVal = document.getElementById('patient-doge').value;
-    let patientAddress = document.getElementById('myInput').value;
-    /*
-    let hospitalPhNoVal=
-    let hospitalDistrictVal=
-    let hospitalEmailVal=
-    let hospitalName=
-  */
-    console.log('-----------🍌🍌🍌---------------');
-    console.log(patientIdVal);
-    console.log(patientNameVal);
-    console.log(patientDogeVal);
-    console.log(patientAddress);
-    console.log(props.loggedInHospitalDetail);
-    console.log('-------------🍌🍌🍌-------------');
+    let patientAddressVal = document.getElementById('myInput').value;
+    let hospitalPhNoVal = props.loggedInHospitalDetail.loggedInHotpitalPhNo;
+    let hospitalDistrictVal =
+      props.loggedInHospitalDetail.loggedInHospitalDistrict;
+    let hospitalEmailVal = props.loggedInHospitalDetail.loggedInHospitalEmail;
+    let hospitalName = props.loggedInHospitalDetail.loggedInHospitalName;
+
+    // ______________SEND RECOVERED PATIENT TO SERVER TO SAVE
+
+    axios
+      .post('http://localhost:5000/api/patient/recovered', {
+        data: {
+          patientId: patientIdVal,
+          patientName: patientNameVal,
+          patientDoge: patientDogeVal,
+          patientAddress: patientAddressVal,
+          hotpitalPhNo: hospitalPhNoVal,
+          hospitalDistrict: hospitalDistrictVal,
+          hospitalEmail: hospitalEmailVal,
+          hospitalName: hospitalName,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.message);
+        // Patient already added
+        // patient Data Saved Successfully
+        if (res.data.message === 'patient Data Saved Successfully') {
+          toast.success(res.data.message);
+        } else {
+          toast.error(res.data.message);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   //?======================== form handler end
 

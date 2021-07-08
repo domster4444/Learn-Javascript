@@ -233,7 +233,6 @@ const RegisterPageI = (props) => {
   const [code, setCode] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [district, setDistrict] = useState('');
   const [password1, setPassword1] = useState('');
   const [password2, setPassword2] = useState('');
   const [licence, setLicence] = useState('');
@@ -252,18 +251,17 @@ const RegisterPageI = (props) => {
       setPassword2(value);
     } else if (name === 'register_licence_field') {
       setLicence(value);
-    } else if (name === 'register_district_field') {
-      setDistrict(value);
     }
   };
   let registerHandler = (e) => {
     e.preventDefault();
-    console.log(name, email, district, password1, password2, licence);
+    let districtOfHospitalRegistering = document.getElementById('myInput');
+    let districtOfHospitalRegisteringVal = districtOfHospitalRegistering.value;
+    console.log(name, email, password1, password2, licence);
 
     if (
       name.length === 0 ||
       email.length === 0 ||
-      district.length === 0 ||
       password1 === 0 ||
       password2 === 0 ||
       licence.length === 0
@@ -276,7 +274,7 @@ const RegisterPageI = (props) => {
           data: {
             name: name,
             email: email,
-            district: district,
+            district: districtOfHospitalRegisteringVal,
             password1: password1,
             password2: password2,
             licence: licence,
@@ -432,7 +430,6 @@ const RegisterPageI = (props) => {
 
                   <Form.Control
                     required
-                    id="register_district_field"
                     name="register_district_field"
                     onChange={globalRegisterHandler}
                     id="myInput"

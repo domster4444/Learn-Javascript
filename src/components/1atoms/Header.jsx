@@ -39,12 +39,15 @@ export default function Header(props) {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu>
-                    <Dropdown.Item href="#/action-2">
+                    <Dropdown.Item>
                       <Link to="/hospitalservice">Hospital Services</Link>
                     </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
+                    <Dropdown.Item>
                       <Link to="/covidstatus">Covid Status</Link>
                     </Dropdown.Item>
+                    {/* <Dropdown.Item>
+                      <Link to="/districtstatspage">District Stats</Link>
+                    </Dropdown.Item> */}
                   </Dropdown.Menu>
                 </Dropdown>
 
