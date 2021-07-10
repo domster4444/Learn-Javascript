@@ -12,7 +12,6 @@ import SignUpPage from './components/5pages/RegisterPageI';
 import LoginPage from './components/5pages/LoginPageI';
 import ForgotPasswordPage from './components/5pages/ForgotPasswordPage';
 import PageNotFound from './components/5pages/PageNotFound';
-import Service from './components/5pages/Service';
 import OurTeam from './components/5pages/OurTeam';
 import { useState } from 'react';
 import { css } from 'styled-components';
@@ -77,10 +76,7 @@ function App() {
         />
         <Route path="/forgotpassword" component={ForgotPasswordPage} />
         <Route path="/404" component={PageNotFound} />
-        <Route
-          path="/service"
-          component={() => <Service isLoggedInProps={isLoggedIn} />}
-        />
+
         <Route
           path="/hospitalservice"
           component={() => <HospitalService isLoggedInProps={isLoggedIn} />}

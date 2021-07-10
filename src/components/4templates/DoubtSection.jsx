@@ -68,44 +68,50 @@ export default function DoubtSection() {
         {/* ----------------------------------------  */}
         <div id="leftSection">
           <h4 className="poppins_light_300">
-            What Makes <br />
-            <b className="poppins_medium_500">Abian</b> The <br />
-            <b className="poppins_medium_500"> Best Place</b> To Find
-            <br /> <b className="poppins_medium_500">Services</b> In Nepal?
+            Why choose us
+            <br />
+            <b className="poppins_medium_500">for your daily</b> <br />
+            <b className="poppins_medium_500">covid info and </b>
+            <br /> <b className="poppins_medium_500">helathcare support</b> in
+            Nepal?
           </h4>
         </div>
         <div id="rightSection">
           <div className="upperBlock">
             <div className="doutCards" id="card1">
               <img src={card1Image} alt="representation of icon" />
-              <h4>Build With Latest Technology</h4>
+              <h4>
+                Built with latest trending technology intended to help millions
+                around us
+              </h4>
 
               <p className="poppins_light_300">
-                All Our Services Are Created With Trending Technologies.
+                {/* All Our Services Are Created With Trending Technologies. */}
               </p>
             </div>
             <div className="doutCards" id="card2">
               <img src={card2Image} alt="representation of icon" />
-              <h4>People Trust Us</h4>
-              <p className="poppins_light_300">
-                People trust us as we provide secure services to our clients.
-              </p>
+              <h4> Forming a Trusting relationship with our people </h4>
+              <p className="poppins_light_300"></p>
             </div>
           </div>
           <div className="upperBlock">
             <div className="doutCards" id="card3">
               <img src={card3Image} alt="representation of icon" />
-              <h4>Less Price</h4>
+              <h4>
+                Get the information of hospitals around you and get help through
+                their helpline
+              </h4>
               <p className="poppins_light_300">
-                All our services are up of high quality and promising low
-                prices.
+                {/* All our services are up of high quality and promising low */}
+                {/* prices. */}
               </p>
             </div>
             <div className="doutCards" id="card4">
               <img src={card4Image} alt="representation of icon" />
-              <h4>Quality Services</h4>
+              <h4>Have Access to the latest update in covid news</h4>
               <p className="poppins_light_300">
-                Our Team are 24/7 a day available to reach out to you for help.
+                {/* Our Team are 24/7 a day available to reach out to you for help. */}
               </p>
             </div>
           </div>

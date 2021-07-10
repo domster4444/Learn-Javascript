@@ -9,11 +9,10 @@ export default function ArrowGhostCardSection() {
           <div className="AboutUs_WhyChooseUs_Card cursor">
             <div className="AboutUs_WhyChooseUs_Card-Circles blue"></div>
 
-            <h2 className="poppins_bold_700">Digital Analytics</h2>
+            <h2 className="poppins_bold_700">Wear Masks</h2>
             <p className="poppins_regular_400">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
-              iste explicabo error excepturi placeat facilis est totam vel
-              tempore blanditiis, ipsum, assumenda distinctio expedita? Fuga.
+              We request all our audience to wear masks and protect themselves
+              and those around them.
             </p>
             <div className="arrowIconContainer">
               <img src={rightArrow} alt="right arrow logo" />
@@ -23,11 +22,10 @@ export default function ArrowGhostCardSection() {
           <div className="AboutUs_WhyChooseUs_Card cursor">
             <div className="AboutUs_WhyChooseUs_Card-Circles green"></div>
 
-            <h2 className="poppins_bold_700">Digital Analytics</h2>
+            <h2 className="poppins_bold_700">Maintain Distance</h2>
             <p className="poppins_regular_400">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
-              iste explicabo error excepturi placeat facilis est totam vel
-              tempore blanditiis, ipsum, assumenda distinctio expedita? Fuga.
+              Everyone is requested to maintain physical distance between those
+              around them for safety measures.
             </p>
             <div className="arrowIconContainer">
               <img src={rightArrow} alt="right arrow logo" />
@@ -36,11 +34,10 @@ export default function ArrowGhostCardSection() {
           <div className="AboutUs_WhyChooseUs_Card cursor">
             <div className="AboutUs_WhyChooseUs_Card-Circles gold"></div>
 
-            <h2 className="poppins_bold_700">Digital Analytics</h2>
+            <h2 className="poppins_bold_700">Get Help!</h2>
             <p className="poppins_regular_400">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
-              iste explicabo error excepturi placeat facilis est totam vel
-              tempore blanditiis, ipsum, assumenda distinctio expedita? Fuga.
+              If you develop any covid symptoms, contact our helpline and get
+              medical help as soon as possible.
             </p>
             <div className="arrowIconContainer">
               <img src={rightArrow} alt="right arrow logo" />

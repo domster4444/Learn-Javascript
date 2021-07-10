@@ -3702,6 +3702,44 @@ a:visited {
   margin-bottom: 1.5rem;
 }
 
+#covidFact {
+  font-size: 2.1rem;
+  color: white;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+#covidFact .card {
+  border: none;
+  background-color: #4b61d1;
+}
+
+#covidFact .card-header {
+  border: none;
+}
+
+#covidFact .card-header:hover {
+  background-color: #687de9;
+}
+
+#covidFact #covidFactWarningIco {
+  margin-right: 2rem;
+  color: white;
+}
+
+#covidFact .card-header {
+  justify-content: flex-start;
+}
+
+#covidFact ul {
+  padding-left: 2rem;
+}
+
+#covidFact ul li {
+  color: white;
+  font-size: 1.6rem;
+}
+
 .container-0-2-1 {
   margin-top: 10rem;
 }
@@ -3737,16 +3775,34 @@ a:visited {
 }
 
 .modal-content label {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 .modal-content input {
-  height: 4rem;
+  font-size: 1.8rem;
+  height: 5rem;
 }
 
-.modal-content button {
+.modal-content input :placeholder-shown {
+  font-size: 1.8rem;
+}
+
+.modal-content #initail-setup-detail-title {
+  width: 100%;
+  color: #007bff;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.modal-content .setup-detail-subTitle {
+  width: 100%;
+  color: black;
+  font-size: 1.5rem;
+}
+
+.btn {
   padding: 0.5rem 2rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem !important;
 }
 
 #pie-chart {
@@ -4182,157 +4238,6 @@ a:visited {
   transform: scale(1.2);
 }
 
-:root {
-  --modal-duration: 1s;
-  --modal-color: transparent;
-}
-
-.modal {
-  overflow-x: hidden !important;
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  margin: 10% auto;
-  width: 50%;
-  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-}
-
-.modal-header h2,
-.modal-footer h3 {
-  margin: 0;
-}
-
-.modal-header {
-  background: var(--modal-color);
-  color: #fff;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.modal-body {
-  background: #fff;
-}
-
-.modal-footer {
-  background: var(--modal-color);
-  color: #fff;
-  text-align: center;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.close {
-  padding: 0 !important;
-  margin-top: -2rem;
-  background: black;
-  position: relative;
-  z-index: 10000;
-  float: right;
-  font-size: 30px;
-  color: white;
-}
-
-.close:hover,
-.close:focus {
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-@keyframes modalopen {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-#modalBody {
-  position: relative;
-}
-
-#modalBody video {
-  margin-top: 6rem;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  outline: none;
-  position: absolute;
-  z-index: 1;
-}
-
-@media (min-width: 877px) {
-  #modalBody video {
-    height: 28.5rem;
-  }
-}
-
-@media (max-width: 878px) {
-  #modalBody video {
-    margin-top: 5rem;
-    height: 22.3rem;
-  }
-}
-
-@media (max-width: 879px) {
-  #modalBody video {
-    margin-top: 6rem;
-    height: 29rem;
-  }
-}
-
-@media (max-width: 861px) {
-  #modalBody video {
-    margin-top: 6rem;
-    height: 28.9rem;
-  }
-}
-
-@media (max-width: 860px) {
-  #modalBody video {
-    margin-top: 7rem;
-    height: 32.7rem;
-  }
-}
-
-@media (max-width: 860px) {
-  #modalBody video {
-    margin-top: 7rem;
-    height: 32.7rem;
-  }
-}
-
-@media (max-width: 788px) {
-  #modalBody video {
-    margin-top: 4.2rem;
-    height: 18.8rem;
-  }
-}
-
-#modalBody img {
-  position: absolute;
-  margin-left: 50%;
-  transform: translateX(-50%);
-}
-
-@media (min-width: 880px) {
-  #modalBody img {
-    height: 50rem;
-  }
-}
-
 #groupCompaniesListSection #groupCompaniesListSection {
   display: flex;
   justify-content: space-between;
@@ -4682,35 +4587,35 @@ a:visited {
 }
 
 #doubtSection #rightSection .upperBlock #card1 {
-  border-left: 4px solid #2d3cd9;
+  border-left: 4px solid #00234b;
 }
 
 #doubtSection #rightSection .upperBlock #card1 h4 {
-  color: #2d3cd9;
+  color: #00234b;
 }
 
 #doubtSection #rightSection .upperBlock #card2 {
-  border-left: 4px solid #0bbdf2;
+  border-left: 4px solid #00234b;
 }
 
 #doubtSection #rightSection .upperBlock #card2 h4 {
-  color: #0bbdf2;
+  color: #00234b;
 }
 
 #doubtSection #rightSection .upperBlock #card3 {
-  border-left: 4px solid #47d990;
+  border-left: 4px solid #00234b;
 }
 
 #doubtSection #rightSection .upperBlock #card3 h4 {
-  color: #47d990;
+  color: #00234b;
 }
 
 #doubtSection #rightSection .upperBlock #card4 {
-  border-left: 4px solid #ffc400;
+  border-left: 4px solid #00234b;
 }
 
 #doubtSection #rightSection .upperBlock #card4 h4 {
-  color: #ffc400;
+  color: #00234b;
 }
 
 #doubtSection #rightSection .upperBlock #card1 h4,
@@ -4866,7 +4771,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .carousel #firstCard {
-  background-color: #7080fa;
+  background-color: #4b61d1;
 }
 
 .carousel #secondCard {
@@ -4874,15 +4779,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 .carousel #thirdCard {
-  background-color: #4169e1;
+  background-color: #4b61d1;
 }
 
 .carousel #fourthCard {
-  background-color: #3cbbda;
+  background-color: #4b61d1;
 }
 
 .carousel #fifthCard {
-  background-color: lightskyblue;
+  background-color: #4b61d1;
 }
 
 .partnerCard {
@@ -5301,6 +5206,41 @@ body::-webkit-scrollbar-thumb {
 #serviceSection .contentBlock {
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.update-resource {
+  margin-top: 10rem;
+}
+
+.update-resource label {
+  font-weight: bolder;
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+.update-resource button {
+  font-size: 2.5rem !important;
+  width: 100%;
+}
+
+.update-resource input {
+  text-align: center;
+  margin-bottom: 2rem;
+  height: 6.2rem;
+  font-size: 1.9rem;
+}
+
+.update-resource input :placeholder-shown {
+  font-size: 1.9rem;
+}
+
+.update-resource .containerCenter .contentBlock form {
+  box-shadow: 0px 0px 6px 6px whitesmoke;
+  border-radius: 0.5rem;
+  padding: 2rem 3rem;
+  font-size: 1.7rem;
+  width: 70%;
+  background-color: white;
 }
 
 .autocomplete-items {
@@ -6578,6 +6518,11 @@ body {
 .sidebar.active ~ .home_content {
   width: calc(100% - 240px);
   left: 240px;
+}
+
+.vaccineIco {
+  margin: 1.5rem;
+  height: 2rem;
 }
 
 #dashboard-bodycontent-header {

@@ -34,6 +34,7 @@
 
 //? 5-MODULES
 
+@import '5-modules/headAccordion';
 @import '5-modules/notification';
 @import '5-modules/plasmaListGroup';
 @import '5-modules/initialDetailSetup';
@@ -47,7 +48,6 @@
 @import '5-modules/serviceFigureSection';
 @import '5-modules/offerCard';
 @import '5-modules/modelBtn';
-@import '5-modules/videoModal';
 @import '5-modules/groupCompaniesListSection';
 @import '5-modules/getAbianSection';
 @import '5-modules/doubtSection';
@@ -59,13 +59,14 @@
 @import '5-modules/additionalServiceCard';
 @import '5-modules/additionalServiceSection';
 @import '5-modules/messageBox';
-// @import '5-modules/ghostTag';//StyledCOMPO
 @import '5-modules/feaTag';
 @import '5-modules/heroSection';
 @import '5-modules/serviceCard';
 @import '5-modules/serviceSection';
 
 //? 5-PAGES
+@import '6-pages/updateResourcePages';
+@import '6-pages/initialSetupModel';
 @import '6-pages/districtStatsPage';
 @import '6-pages/hospitalServicePage';
 @import '6-pages/dashboardHomeBody';

@@ -1,6 +1,5 @@
 import React from 'react';
 import FeaTag from '../1atoms/FeaTag';
-import GhostTag from '../1atoms/GhostTag';
 
 import doctor from '../../img/generalImage/doctor.png';
 import todo from '../../img/todo.png';

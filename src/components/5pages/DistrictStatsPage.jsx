@@ -330,6 +330,7 @@ const DistrictStatsPage = () => {
         setDistrictFetchedData(res.data.title);
         setDetailedCovidInfo(res.data.covid_cases);
         setAllDistrictStatDataLoadedState(true);
+        console.log('owu 🍉🍉🍉🍉🍉');
         console.log(res);
       });
     }

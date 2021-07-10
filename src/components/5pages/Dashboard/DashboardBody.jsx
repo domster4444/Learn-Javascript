@@ -287,7 +287,7 @@ const DashboardBody = () => {
                 className="plasmaFieldSearchInput poppins_regular_400"
                 id="myInput"
                 type="text"
-                placeholder="Enter District"
+                placeholder="Search Plasma Donors By District"
               />
             </form>
 

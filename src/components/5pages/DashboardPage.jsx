@@ -12,10 +12,21 @@ import Modal from 'react-bootstrap/Modal';
 
 // ============PAGE
 import DashboardBody from './Dashboard/DashboardBody';
+// --dashboard bdy
+
 import RecoveredPatientBody from './Dashboard/RecoveredPatientBody';
+import UpdateOxyCylBody from './Dashboard/UpdateNoOfCylinder';
+import UpdateBedAvailableBody from './Dashboard/UpdateNoOfBed';
+import UpdateSingleVacPatientBody from './Dashboard/UpdateSingleVacPatient';
+import UpdateDoubleVacPatientBody from './Dashboard/UpdateDoubleVacPatient';
+import UpdateTripleCovidPatientBody from './Dashboard/UpdateTripleVacPatient';
+import UpdateTotalCovidBody from './Dashboard/UpdateTotalCovidPatient';
 
 // ==========IMG
 import hospitalIco from '../../img/generalImage/hospital.png';
+import singleVaccinatedIco from '../../img/DashboardSideIco/singleVaccinatedIco.png';
+import doubleVaccinatedIco from '../../img/DashboardSideIco/doubleVaccinatedIco.png';
+import tripleVaccinatedIco from '../../img/DashboardSideIco/tripleVaccinatedIco.png';
 
 const DashboardPage = (props) => {
   // __________DATA AVAILABLE
@@ -144,7 +155,6 @@ const DashboardPage = (props) => {
       props.loggedInHospitalDetail.loggedInHospitalName;
     let loggedInHospitalDistrictVal =
       props.loggedInHospitalDetail.loggedInHospitalDistrict;
-    alert('posted');
     axios
       .post('http://localhost:5000/api/hospitalresourcedetail', {
         data: {
@@ -191,66 +201,74 @@ const DashboardPage = (props) => {
               onHide={handleClose}
             >
               <Modal.Header closeButton>
-                <Modal.Title style={{ color: 'black' }}>
+                <Modal.Title id="initail-setup-detail-title">
                   SetUp Initial Hospital Details
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <section>
-                  SetUp Initial Hosptial Detaills <br />
+                <section className="setup-detail-subTitle">
+                  <u>SetUp Initial Hosptial Detaills </u>
                   <br />
-                  <Form.Label className="poppins_medium_500">
+                  <br />
+                  <Form.Label className="poppins_medium_500 label-title">
                     No of oxygen cylinder available
                   </Form.Label>
                   <Form.Control
+                    className="model-input-field"
                     id="oxyCylInputField"
                     type="number"
                     placeholder="Enter no of oxygen cylinder available"
                   />
-                  <Form.Label className="poppins_medium_500">
+                  <Form.Label className="poppins_medium_500 label-title">
                     No of Bed available
                   </Form.Label>
                   <Form.Control
+                    className="model-input-field"
                     id="vacBedInputField"
                     type="number"
                     placeholder="Enter no of bed available"
                   />
-                  <Form.Label className="poppins_medium_500">
+                  <Form.Label className="poppins_medium_500 label-title">
                     No of single vaccinated people
                   </Form.Label>
                   <Form.Control
+                    className="model-input-field"
                     id="singleVaccinatedInputField"
                     type="number"
-                    placeholder="Enter no of single vaccinated input"
+                    placeholder="Enter no of single vaccinated patient admitted"
                   />
-                  <Form.Label className="poppins_medium_500">
+                  <Form.Label className="poppins_medium_500 label-title">
                     No of double vaccinated people
                   </Form.Label>
                   <Form.Control
+                    className="model-input-field"
                     id="doubleVaccinatedInputField"
                     type="number"
-                    placeholder=" Enter how many patient had 2 vaccine"
+                    placeholder="Enter no of double vaccinated patient admitted"
                   />
-                  <Form.Label className="poppins_medium_500">
+                  <Form.Label className="poppins_medium_500 label-title">
                     No of triple vaccinated people
                   </Form.Label>
                   <Form.Control
+                    className="model-input-field"
                     id="tripleVaccinatedInputField"
                     type="number"
-                    placeholder="Enter how many patient had 3 vaccine"
+                    placeholder="Enter no of triple vaccinated patient admitted"
                   />
-                  <Form.Label className="poppins_medium_500">
+                  <Form.Label className="poppins_medium_500 label-title">
                     Total Covid Patient
                   </Form.Label>
                   <Form.Control
+                    className="model-input-field"
                     id="totalCovidInputField"
                     type="number"
                     placeholder="Enter total covid patient in your hospital"
                   />
-                  <Form.Label className="poppins_medium_500">
+                  <Form.Label className="poppins_medium_500 label-title">
                     Hospital Phone No
                   </Form.Label>
                   <Form.Control
+                    className="model-input-field"
                     id="hospitalPhNo"
                     type="number"
                     placeholder="Enter hospital phone no"
@@ -259,7 +277,7 @@ const DashboardPage = (props) => {
               </Modal.Body>
               <Modal.Footer>
                 <Button
-                  className="poppins_regular_400"
+                  className="poppins_regular_400 btn"
                   variant="secondary"
                   onClick={handleClose}
                 >
@@ -297,46 +315,58 @@ const DashboardPage = (props) => {
                 <span className="tooltip">Recovered Patient</span>
               </li>
               <li>
-                <Link to="/">
-                  <i className="bx bx-chat" />
-                  <span className="links_name">Messages</span>
+                <Link to="/update-oxy-available">
+                  <i class="bx bx-coin-stack"></i>
+                  <span className="links_name">Update Oxy Cylinder</span>
                 </Link>
-                <span className="tooltip">Messages</span>
+                <span className="tooltip">Update Oxy Cylinder</span>
               </li>
               <li>
-                <Link to="/">
-                  <i className="bx bx-pie-chart-alt-2" />
-                  <span className="links_name">Analytics</span>
+                <Link to="/update-bed-available">
+                  <i class="bx bx-bed"></i>
+                  <span className="links_name">Update Bed Availability</span>
                 </Link>
-                <span className="tooltip">Analytics</span>
+                <span className="tooltip">Update Bed Availability</span>
               </li>
               <li>
-                <Link to="/">
-                  <i className="bx bx-folder" />
-                  <span className="links_name">File Manager</span>
+                <Link to="/update-net-single-vac-patient">
+                  <img
+                    className="vaccineIco"
+                    src={singleVaccinatedIco}
+                    alt=""
+                  />
+                  <span className="links_name">Upd. Single Vaccinated</span>
                 </Link>
-                <span className="tooltip">Files</span>
+                <span className="tooltip">Upd. Single Vaccinated Patient</span>
               </li>
               <li>
-                <Link to="/">
-                  <i className="bx bx-cart-alt" />
-                  <span className="links_name">Order</span>
+                <Link to="/update-net-double-vac-patient">
+                  <img
+                    className="vaccineIco"
+                    src={doubleVaccinatedIco}
+                    alt=""
+                  />
+                  <span className="links_name">Upd. Double Vaccinated</span>
                 </Link>
-                <span className="tooltip">Order</span>
+                <span className="tooltip">Upd. Double Vaccinated</span>
               </li>
               <li>
-                <Link to="/">
-                  <i className="bx bx-heart" />
-                  <span className="links_name">Saved</span>
+                <Link to="/update-net-triple-vac-patient">
+                  <img
+                    className="vaccineIco"
+                    src={tripleVaccinatedIco}
+                    alt=""
+                  />
+                  <span className="links_name">Upd. Triple Vaccinated</span>
                 </Link>
-                <span className="tooltip">Saved</span>
+                <span className="tooltip">Upd. Triple Vaccinated</span>
               </li>
               <li>
-                <Link to="/">
-                  <i className="bx bx-cog" />
-                  <span className="links_name">Setting</span>
+                <Link to="/update-total-covid-no">
+                  <i class="bx bxs-virus"></i>
+                  <span className="links_name">Upd. Total Covid</span>
                 </Link>
-                <span className="tooltip">Setting</span>
+                <span className="tooltip">Upd. Total Covid</span>
               </li>
             </ul>
             <div className="profile_content">
@@ -380,6 +410,67 @@ const DashboardPage = (props) => {
               path="/recoveredpatient"
               component={() => (
                 <RecoveredPatientBody
+                  setLoggedInHotpitalPhNo={props.setLoggedInHotpitalPhNo}
+                  loggedInHospitalDetail={props.loggedInHospitalDetail}
+                />
+              )}
+            />
+            {/* //!--update  */}
+            <Route
+              exact
+              path="/update-oxy-available"
+              component={() => (
+                <UpdateOxyCylBody
+                  setLoggedInHotpitalPhNo={props.setLoggedInHotpitalPhNo}
+                  loggedInHospitalDetail={props.loggedInHospitalDetail}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/update-bed-available"
+              component={() => (
+                <UpdateBedAvailableBody
+                  setLoggedInHotpitalPhNo={props.setLoggedInHotpitalPhNo}
+                  loggedInHospitalDetail={props.loggedInHospitalDetail}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/update-net-single-vac-patient"
+              component={() => (
+                <UpdateSingleVacPatientBody
+                  setLoggedInHotpitalPhNo={props.setLoggedInHotpitalPhNo}
+                  loggedInHospitalDetail={props.loggedInHospitalDetail}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/update-net-double-vac-patient"
+              component={() => (
+                <UpdateDoubleVacPatientBody
+                  setLoggedInHotpitalPhNo={props.setLoggedInHotpitalPhNo}
+                  loggedInHospitalDetail={props.loggedInHospitalDetail}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/update-net-triple-vac-patient"
+              component={() => (
+                <UpdateTripleCovidPatientBody
+                  setLoggedInHotpitalPhNo={props.setLoggedInHotpitalPhNo}
+                  loggedInHospitalDetail={props.loggedInHospitalDetail}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/update-total-covid-no"
+              component={() => (
+                <UpdateTotalCovidBody
                   setLoggedInHotpitalPhNo={props.setLoggedInHotpitalPhNo}
                   loggedInHospitalDetail={props.loggedInHospitalDetail}
                 />

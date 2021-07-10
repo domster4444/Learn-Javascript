@@ -24,13 +24,7 @@ export default function Footer() {
               </a>
 
               <a href="https://google.com">
-                <li className="poppins_light_300">Offers</li>
-              </a>
-              <a href="https://google.com">
                 <li className="poppins_light_300">Register</li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300">Services</li>
               </a>
 
               <a href="https://google.com">
@@ -45,23 +39,10 @@ export default function Footer() {
             <h3 className="poppins_medium_500"> About Us</h3>
             <ul>
               <a href="https://google.com">
-                <li className="poppins_light_300"> Plans</li>
+                <li className="poppins_light_300">Our Team</li>
               </a>
               <a href="https://google.com">
-                <li className="poppins_light_300"> Team</li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300"> Goals</li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300"> Policies</li>
-              </a>
-
-              <a href="https://google.com">
-                <li className="poppins_light_300"> Journey</li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300"> Services</li>
+                <li className="poppins_light_300">Our Services</li>
               </a>
             </ul>
           </section>
@@ -73,33 +54,11 @@ export default function Footer() {
 
             <ul>
               <a href="https://google.com">
-                <li className="poppins_light_300">Rent House Platform </li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300">Food Ordering Platform</li>
+                <li className="poppins_light_300">Hospital Service</li>
               </a>
 
               <a href="https://google.com">
-                <li className="poppins_light_300">
-                  Direct Land Sale Platform{' '}
-                </li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300">Urgent Ambulance Call</li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300">Online Admission Platform</li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300">
-                  Online Hospital Appointment
-                </li>
-              </a>
-
-              <a href="https://google.com">
-                <li className="poppins_light_300">
-                  School Management Software
-                </li>
+                <li className="poppins_light_300">Covid Statistics</li>
               </a>
             </ul>
           </section>
@@ -109,33 +68,21 @@ export default function Footer() {
             </div>
             <h3 className="poppins_medium_500"> Contacts</h3>
             <ul>
-              <a href="https://google.com">
-                <li className="poppins_light_300">Chat Live</li>
+              <a href="mailto:kshitiz.stha11@gmail.com">
+                <li className="poppins_light_300"> Email Us</li>
               </a>
               <a href="https://google.com">
-                <li className="poppins_light_300">Our Advisors</li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300"> Care Support</li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300">Email Contacts</li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300"> Technical Support</li>
-              </a>
-              <a href="https://google.com">
-                <li className="poppins_light_300">Employees Contacts</li>
+                <li className="poppins_light_300">Contacts Us</li>
               </a>
             </ul>
           </section>
         </footer>
         <div className="greyBox poppins_light_300">
-          **IMPORTANT NOTICE: This platform is created by kshitiz & /* Copyright
-          (C) Abian Company - All Rights Reserved Unauthorized copying of this
-          site or the ideas , via any medium or in any way directly or
+          **IMPORTANT NOTICE: This platform is created by Victrio Team & /*
+          Copyright (C) Victiro - All Rights Reserved Unauthorized copying of
+          this site or the ideas , via any medium or in any way directly or
           indirectly is strictly prohibited Proprietary and confidential Written
-          by Kshitiz Shahkshitiz.stha11@gmail.com, 4th March 2021 */
+          by Kshitiz Shah kshitiz.stha11@gmail.com, 4th March 2021 */
         </div>
       </main>
     </>

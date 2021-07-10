@@ -4,12 +4,48 @@ import BlueGhostBtn from './BlueGhostBtn';
 import { Link } from 'react-router-dom';
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle';
 import Dropdown from 'react-bootstrap/esm/Dropdown';
+// ---------------react btstrp
+import Card from 'react-bootstrap/Card';
+import Accordion from 'react-bootstrap/Accordion';
+
+// ------------------react icons
+
+import { FiAlertTriangle } from 'react-icons/fi';
 export default function Header(props) {
   if (props.isLoggedInProps === true) {
     return <div></div>;
   } else {
     return (
       <>
+        <Accordion
+          className="poppins_regular_400"
+          defaultActiveKey="0"
+          id="covidFact"
+        >
+          <Card>
+            <Accordion.Toggle as={Card.Header} eventKey="0">
+              <FiAlertTriangle id="covidFactWarningIco" />
+              Covid Fact
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body>
+                <ul className="poppins_regular_400">
+                  <li>Clean your hands often</li>
+                  <li>Cough or sneeze in your bent elbow - not your hands!</li>
+                  <li>Avoid touching your eyes, nose and mouth </li>
+                  <li>
+                    Limit social gatherings and time spent in crowded places
+                  </li>
+                  <li>Avoid close contact with someone who is sick</li>
+                  <li>
+                    Clean and disinfect frequently touched objects and surfaces
+                  </li>
+                </ul>
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>
+
         <header id="navBar">
           <nav>
             <a href="/">
@@ -23,9 +59,6 @@ export default function Header(props) {
                   <a href="/">Home</a>
                 </li>
 
-                <li className="cursor poppins_regular_400">
-                  <Link to="/service">Know Us</Link>
-                </li>
                 <Dropdown
                   id="headerDropdown"
                   className="cursor poppins_regular_400"

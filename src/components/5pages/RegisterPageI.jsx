@@ -322,8 +322,7 @@ const RegisterPageI = (props) => {
                 <section id="formContainer">
                   <h1>{code}</h1>
                   <h1 className="poppins_medium_500">
-                    Let's protect yourself and those <br /> around you by
-                    vaccinating{' '}
+                    Let's protect yourself and those <br /> around you
                   </h1>
 
                   {/* _______________________hospital name  */}
@@ -412,7 +411,7 @@ const RegisterPageI = (props) => {
                     name="register_licence_field"
                     onChange={globalRegisterHandler}
                     type="text"
-                    placeholder="Enter email"
+                    placeholder="Enter licence key"
                   />
 
                   {/* -------------hospital district field */}

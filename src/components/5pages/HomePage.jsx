@@ -24,10 +24,8 @@ export default function Homepage(props) {
     return (
       <div id="homepage">
         <Notice />
-        {/* //Video modal should be at top */}
         <BackgroundBlob1 />
         <HeroSection></HeroSection>
-        {/* <ServiceSection></ServiceSection> */}
         <AdditionalServiceSection></AdditionalServiceSection>
         <FeatCarousel />
         <DoubtSection />
@@ -35,8 +33,6 @@ export default function Homepage(props) {
         <ArrowGhostCardSection />
         <ExperienceSection />
         <OurPartner />
-        {/* <MessageBox /> */}
-        {/* <CustomerChat></CustomerChat> */}
         <GroupCompaniesListSection />
         {/* <PricingPlanSection /> */}
 

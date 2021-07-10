@@ -110,8 +110,7 @@ const LoginPageI = (props) => {
               <div id="rightDivision">
                 <section id="formContainer">
                   <h1 className="poppins_medium_500">
-                    Let's protect yourself and those <br /> around you by
-                    vaccinating{' '}
+                    Let's protect yourself and those <br /> around you
                   </h1>
 
                   <label
@@ -155,7 +154,7 @@ const LoginPageI = (props) => {
                     id="login_code_field"
                     onChange={globalLoginHandler}
                     type="text"
-                    placeholder="Enter email"
+                    placeholder="Enter code"
                   />
                   {/* ___________________second input */}
                   <label

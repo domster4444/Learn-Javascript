@@ -6,20 +6,18 @@ export default function GetTheAbianApp() {
     <main id="getAbianAppSectionContainer">
       <section id="getAbianAppSection">
         <div id="leftSection">
-          <h1 className="poppins_light_300">Get the Abian app</h1>
+          <h1 className="poppins_light_300">Get the Covid Stats app</h1>
           <div id="appTitleBlueRectangle"></div>
           <h2 className="poppins_regular_400">
             Services to solve your problems anywhere, anytime
           </h2>
           <ul>
+            <li className="poppins_light_300">🌟 &nbsp; Get the covid info</li>
             <li className="poppins_light_300">
-              🌟 &nbsp; Compare Different Services
+              🌟 &nbsp; Directly contact helpline
             </li>
             <li className="poppins_light_300">
-              🌟 &nbsp; Use 50+ Services With Userfriendly Interface
-            </li>
-            <li className="poppins_light_300">
-              🌟 &nbsp;Demand Your Desired Services
+              🌟 &nbsp; Latest stats update from the concerned authority
             </li>
             <li className="poppins_light_300">
               🌟 &nbsp; Download Our App With Single Tap

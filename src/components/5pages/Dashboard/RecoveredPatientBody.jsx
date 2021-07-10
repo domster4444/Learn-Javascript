@@ -294,12 +294,12 @@ const RecoveredPatientBody = (props) => {
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridPassword">
-                  <Form.Label>No of doge took</Form.Label>
+                  <Form.Label>Total Vaccine Doge He Took</Form.Label>
                   <Form.Control
                     id="patient-doge"
                     required
                     type="text"
-                    placeholder="Enter no of doge"
+                    placeholder="Enter no of vaccine doge"
                   />
                 </Form.Group>
               </Form.Row>
@@ -318,7 +318,7 @@ const RecoveredPatientBody = (props) => {
                       required
                       id="myInput"
                       type="text"
-                      placeholder="Enter District"
+                      placeholder="Enter Patient HomeTown District"
                     />
                   </form>
                 </Form.Group>
@@ -329,7 +329,7 @@ const RecoveredPatientBody = (props) => {
                     id="patient-id"
                     required
                     type="text"
-                    placeholder="Enter Phone no"
+                    placeholder=" Patient ID"
                   />
                 </Form.Group>
               </Form.Row>

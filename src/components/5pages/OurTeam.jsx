@@ -62,7 +62,7 @@ export default function OurTeam(props) {
                   <p className="poppins_regular_400">Our Presentor</p>
                   <div className="container">
                     <div className="left poppins_regular_400">
-                      <strong>Kapoor</strong>
+                      <strong>Tushar</strong>
                       <br />
                       <p className="occupation">Bachelor 1st Year</p>
                     </div>
@@ -95,7 +95,7 @@ export default function OurTeam(props) {
                   <p className="poppins_regular_400">Our Lead Designer</p>
                   <div className="container">
                     <div className="left poppins_regular_400">
-                      <strong>Kritika</strong>
+                      <strong>Prabish</strong>
                       <br />
                       <p className="occupation">Bachelor 1st Year</p>
                     </div>
